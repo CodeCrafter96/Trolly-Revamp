@@ -10,6 +10,28 @@ class SearchBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            blurRadius: 2.0,
+            spreadRadius: 0,
+            offset: const Offset(0, 2),
+          )
+        ],
+      ),
+      child: Column(
+        children: [
+          buildSearchBox(),
+          const SizedBox(height: 22),
+        ],
+      ),
+    );
+  }
+
+  Widget buildSearchBox() {
+    return Container(
       margin: const EdgeInsets.only(left: 24, right: 24, top: 24),
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       decoration: BoxDecoration(

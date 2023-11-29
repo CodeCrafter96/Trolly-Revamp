@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trolly_revamp/data/categories_cube.dart';
+import 'package:trolly_revamp/presentation/pages/product_screen.dart';
+import 'package:trolly_revamp/presentation/widgets/category_cards.dart';
 import 'package:trolly_revamp/utils/constatnt.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -22,38 +25,17 @@ class CategoriesScreen extends StatelessWidget {
           mainAxisExtent: 150,
         ),
         physics: BouncingScrollPhysics(),
+        itemCount: categories_cube.length,
         itemBuilder: (context, index) {
-          return Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.amberAccent,
-            ),
-            child: Column(
-              children: [
-                Container(
-                  color: Colors.blueAccent,
-                  width: double.infinity,
-                  padding: const EdgeInsets.only(left: 16, top: 16),
-                  child: Text(
-                    'Drinks',
-                    style: GoogleFonts.hindMadurai(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
+          return GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => ProductScreen(),
                   ),
-                ),
-                Expanded(
-                  child: Container(
-                      color: Colors.pinkAccent,
-                      width: double.infinity,
-                      child: Image.asset(
-                        grocery,
-                        fit: BoxFit.cover,
-                      )),
-                ),
-              ],
-            ),
-          );
+                );
+              },
+              child: CategoryCards(categories: categories_cube[index]));
         },
       ),
     );

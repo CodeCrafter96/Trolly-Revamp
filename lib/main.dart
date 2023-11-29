@@ -1,13 +1,23 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trolly_revamp/presentation/bloc/tab_switch/tab_switch_bloc.dart';
 import 'package:trolly_revamp/presentation/pages/home_screen.dart';
 import 'package:trolly_revamp/presentation/pages/login_screen.dart';
+import 'package:trolly_revamp/presentation/pages/product_details.dart';
+import 'package:trolly_revamp/presentation/pages/product_screen.dart';
 import 'package:trolly_revamp/presentation/pages/profile_screen.dart';
 import 'package:trolly_revamp/presentation/pages/register_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    // DevicePreview(
+    //   enabled: !kReleaseMode,
+    //   builder: (context) => MyApp(),
+    // ),
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -30,7 +40,7 @@ class MyApp extends StatelessWidget {
               background: Color.fromARGB(250, 255, 255, 255)),
           useMaterial3: true,
         ),
-        home: HomeScreen(),
+        home: ProductScreen(),
       ),
     );
   }

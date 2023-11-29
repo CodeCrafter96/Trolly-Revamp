@@ -20,10 +20,14 @@ const String languageTranslatIC = "assets/icons/translating.svg";
 const String profile = "assets/icons/user_circle.svg";
 const String searchIC = "assets/icons/search_ic.svg";
 const String fireIC = "assets/icons/Fire.svg";
-const String offerRectangleIC = "assets/icons/offer_rectangle.svg"; ///////
+const String offerRectangleIC = "assets/icons/offer_rectangle.svg";
 const String cartButtonIC = "assets/icons/cart_button.svg";
 const String starHandsIC = "assets/icons/star_hands.svg";
 const String heartShineIC = "assets/icons/heart_shine.svg";
+const String whiteCartIC = "assets/icons/white_cart_ic.png";
+const String checkCartIC = "assets/icons/check_cart.svg";
+const String filterIC = "assets/icons/filter.png";
+const String closeBtnIC = "assets/icons/close_circle.svg";
 
 //Bottom Navigation Icons
 const String homeIC = "assets/icons/home_ic.svg";
@@ -52,9 +56,21 @@ const String bathingEssentialsImg =
 
 // Categories Cubes Images
 
-const String drinksImg = "assets/images/category_cubes/drinks.svg";
+const String drinksImg = "assets/images/category_cubes/drinks.png";
 const String grocery = "assets/images/category_cubes/grocery.png";
 const String chicken = "assets/images/category_cubes/chickens.png";
+const String bathingEssentials =
+    "assets/images/category_cubes/bathing_essentials.png";
+const String biscuit = "assets/images/category_cubes/biscuit.png";
+const String snacks = "assets/images/category_cubes/snacks.png";
+const String makeup = "assets/images/category_cubes/makeup.png";
+const String dairyProducts = "assets/images/category_cubes/dairy_products.png";
+const String cleaningEssentials =
+    "assets/images/category_cubes/cleaning_essentials.png";
+
+// Sub Products Images
+
+const String freshVegies = "assets/images/sub_products/fresh_vegies.png";
 
 //Profile Icons
 
@@ -76,3 +92,9 @@ const String logoutIC = "assets/icons/profile_icons/logout.svg";
 const String arrowsIC = "assets/icons/profile_icons/arrow.svg";
 const String redArrowsIC = "assets/icons/profile_icons/red_arrows.svg";
 const String deleteIC = "assets/icons/profile_icons/delete_ac.svg";
+
+// Product Details
+
+const String mango = "assets/images/mango.png";
+
+const String threeDotsIC = "assets/icons/three_dots.png";

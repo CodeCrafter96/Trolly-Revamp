@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:trolly_revamp/data/category.dart';
 import 'package:trolly_revamp/data/deal_header_data.dart';
 import 'package:trolly_revamp/data/offer_data.dart';
+import 'package:trolly_revamp/functions/deal_cards.dart';
 import 'package:trolly_revamp/presentation/bloc/tab_switch/tab_switch_bloc.dart';
 import 'package:trolly_revamp/presentation/bloc/tab_switch/tab_switch_state.dart';
 import 'package:trolly_revamp/presentation/pages/categories_screen.dart';
@@ -36,31 +37,16 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  DealCards dealCards = DealCards();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Column(
           children: [
-            Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    blurRadius: 3.0,
-                    spreadRadius: 0,
-                  )
-                ],
-              ),
-              child: Column(
-                children: [
-                  buildAppHeaders(),
-                  const SearchBox(),
-                  const SizedBox(height: 22),
-                ],
-              ),
-            ),
+            buildAppHeaders(),
+            const SearchBox(),
             Expanded(
               child: BlocBuilder<TabSwitchBloc, TabSwitchState>(
                 builder: (BuildContext context, state) {
@@ -80,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Container(
                             // color: Colors.amberAccent,
                             width: double.infinity,
-                            child: buildDealsCard(),
+                            child: dealCards.buildDealsCard(),
                           ),
                         ],
                       );
@@ -99,8 +85,9 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget buildAppHeaders() {
+  static Widget buildAppHeaders() {
     return Container(
+      color: Colors.white,
       padding: const EdgeInsets.only(left: 24, right: 24, top: 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -114,7 +101,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           InkWell(
-            onTap: getRegisterPage,
             child: SvgPicture.asset(
               profile,
               fit: BoxFit.cover,
@@ -138,43 +124,5 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       ),
     );
-  }
-
-// This is Offers card headers
-
-  Widget buildDealsCard() {
-    return Column(
-      children: [
-        ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            itemCount: dealHeader.length,
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-              return Column(
-                children: [
-                  Container(
-                      margin:
-                          const EdgeInsets.only(left: 24, right: 24, top: 24),
-                      child: DealsHeader(dealHeaderData: dealHeader[index])),
-                  Container(
-                    height: 320,
-                    padding: const EdgeInsets.only(left: 18),
-                    child: buildCards(),
-                  )
-                ],
-              );
-            }),
-      ],
-    );
-  }
-
-  Widget buildCards() {
-    return ListView.builder(
-        itemCount: todaysOffer.length,
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        itemBuilder: (context, index) {
-          return OfferCard(offerData: todaysOffer[index]);
-        });
   }
 }

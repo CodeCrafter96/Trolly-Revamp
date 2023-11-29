@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:trolly_revamp/models/offer_data.dart';
 import 'package:trolly_revamp/utils/constatnt.dart';
 
-class OfferCard extends StatelessWidget {
-  const OfferCard({super.key, required this.offerData});
+class SubProduct extends StatelessWidget {
+  const SubProduct({super.key, required this.offerData});
 
   final OfferData offerData;
 
@@ -13,7 +13,7 @@ class OfferCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 160,
-      margin: const EdgeInsets.only(left: 8, right: 12, top: 12, bottom: 12),
+      // margin: const EdgeInsets.only(left: 8, right: 12, top: 12, bottom: 12),
       padding: const EdgeInsets.only(),
       decoration: const BoxDecoration(
         color: Color.fromARGB(255, 255, 255, 255),
@@ -53,8 +53,8 @@ class OfferCard extends StatelessWidget {
                 child: Image.asset(
                   offerData.productImage,
                   fit: BoxFit.cover,
-                  height: 160,
-                  width: 160,
+                  height: 103,
+                  width: 143,
                 ),
               ),
               Container(
