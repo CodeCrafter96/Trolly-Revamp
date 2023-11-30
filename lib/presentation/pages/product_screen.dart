@@ -1,12 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:trolly_revamp/data/categories_cube.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:trolly_revamp/data/offer_data.dart';
 import 'package:trolly_revamp/data/sub_products_data.dart';
 import 'package:trolly_revamp/presentation/pages/product_details.dart';
-import 'package:trolly_revamp/presentation/widgets/category_cards.dart';
-import 'package:trolly_revamp/presentation/widgets/offer_card.dart';
 import 'package:trolly_revamp/presentation/widgets/search_box.dart';
 import 'package:trolly_revamp/presentation/widgets/sub_product.dart';
 import 'package:trolly_revamp/presentation/widgets/sub_product_card.dart';
@@ -14,7 +14,7 @@ import 'package:trolly_revamp/utils/colors.dart';
 import 'package:trolly_revamp/utils/constatnt.dart';
 
 class ProductScreen extends StatefulWidget {
-  ProductScreen({super.key});
+  const ProductScreen({super.key});
 
   @override
   State<ProductScreen> createState() => _ProductScreenState();
@@ -23,8 +23,13 @@ class ProductScreen extends StatefulWidget {
 class _ProductScreenState extends State<ProductScreen> {
   List<bool> cardSelected = List.generate(10, (index) => false);
 
+  //Bottmo Sheet variables
+  bool isOpen = false;
+  var bottomSheetController;
+
   @override
   Widget build(BuildContext context) {
+    h = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -55,7 +60,18 @@ class _ProductScreenState extends State<ProductScreen> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            buildBottomScreen(context);
+            // isOpen = true;
+            // buildBottomScreen(context, isOpen);
+            showModalBottomSheet(
+              context: context,
+              backgroundColor: Colors.black.withOpacity(0.0),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(0.0)),
+              ),
+              builder: (BuildContext context) {
+                return buildBottomSheet();
+              },
+            );
           },
           backgroundColor: AppColors.orange,
           shape: CircleBorder(),
@@ -137,49 +153,64 @@ class _ProductScreenState extends State<ProductScreen> {
     );
   }
 
-  void buildBottomScreen(context) {
+// Bottom Sheet
+  void buildBottomScreen(context, bool isOpen) {
     showModalBottomSheet(
       context: context,
       builder: (ctx) {
-        return Container(
-          color: Colors.transparent,
-          child: Stack(
-            children: [
-              Container(
-                margin: const EdgeInsets.only(top: 16),
-                color: Colors.pinkAccent,
-              ),
-              SvgPicture.asset(
-                closeBtnIC,
-                fit: BoxFit.cover,
-              ),
-            ],
+        return ClipRRect(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20),
+            topLeft: Radius.circular(20),
+          ),
+          child: Container(
+            height: 300,
+            color: isOpen ? Colors.transparent : Colors.pinkAccent,
+            child: Center(
+              child: Text('Here goes your data'),
+            ),
           ),
         );
       },
     );
   }
 
-  // Widget buildBottomScreen() {
-  //   return BottomSheet(
-  //     onClosing: () {},
-  //     builder: (context) {
-  //       return Container(
-  //         decoration: const BoxDecoration(
-  //           borderRadius: BorderRadius.only(
-  //             topLeft: Radius.circular(32),
-  //             topRight: Radius.circular(32),
-  //           ),
-  //         ),
-  //         child: Stack(
-  //           children: [
-  //             Container(
-  //               margin: const EdgeInsets.only(top: 16),
-  //             )
-  //           ],
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
+  Widget buildBottomSheet() {
+    return Stack(
+      children: [
+        Container(
+          width: double.infinity,
+          margin: const EdgeInsets.only(top: 30),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(32),
+              topRight: Radius.circular(32),
+            ),
+          ),
+        ),
+        Container(
+          height: 100,
+          width: double.infinity,
+          // color: Colors.greenAccent,
+          alignment: Alignment.topRight,
+          padding: const EdgeInsets.only(
+            right: 7,
+            top: 12,
+          ),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: SvgPicture.asset(
+              closeBtnIC,
+              fit: BoxFit.fill,
+              height: 44,
+              width: 44,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }

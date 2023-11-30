@@ -5,12 +5,12 @@ import 'package:trolly_revamp/presentation/widgets/deals_header.dart';
 import 'package:trolly_revamp/presentation/widgets/offer_card.dart';
 
 class DealCards {
-  Widget buildDealsCard() {
+  Widget buildDealsCard(int length) {
     return Column(
       children: [
         ListView.builder(
             physics: NeverScrollableScrollPhysics(),
-            itemCount: dealHeader.length,
+            itemCount: length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
               return Column(

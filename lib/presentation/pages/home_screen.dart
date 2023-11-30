@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Container(
                             // color: Colors.amberAccent,
                             width: double.infinity,
-                            child: dealCards.buildDealsCard(),
+                            child: dealCards.buildDealsCard(dealHeader.length),
                           ),
                         ],
                       );

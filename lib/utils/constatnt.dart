@@ -9,6 +9,8 @@ const String trollyLogo = "assets/images/trolley.png";
 const String carrotImg = "assets/images/carrot_img.png";
 const String watermelonImg = "assets/images/watermelon_img.png";
 
+const String ticketSale = "assets/images/ticket_sale.svg";
+
 // Icons
 
 const String userIC = "assets/icons/user.svg";

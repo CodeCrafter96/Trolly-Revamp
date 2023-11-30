@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:trolly_revamp/data/deal_header_data.dart';
 import 'package:trolly_revamp/functions/deal_cards.dart';
 import 'package:trolly_revamp/presentation/pages/home_screen.dart';
 import 'package:trolly_revamp/presentation/widgets/button_design.dart';
@@ -34,7 +35,7 @@ class ProductDetails extends StatelessWidget {
                 children: [
                   buildProductDetils(),
                   buildAboutProduct(),
-                  dealCards.buildDealsCard(),
+                  dealCards.buildDealsCard(dealHeader.length),
                 ],
               ),
             ),

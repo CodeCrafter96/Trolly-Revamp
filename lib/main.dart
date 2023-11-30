@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trolly_revamp/presentation/bloc/tab_switch/tab_switch_bloc.dart';
+import 'package:trolly_revamp/presentation/pages/cart_screen.dart';
 import 'package:trolly_revamp/presentation/pages/home_screen.dart';
 import 'package:trolly_revamp/presentation/pages/login_screen.dart';
 import 'package:trolly_revamp/presentation/pages/product_details.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
               background: Color.fromARGB(250, 255, 255, 255)),
           useMaterial3: true,
         ),
-        home: ProductScreen(),
+        home: CartScreen(),
       ),
     );
   }
